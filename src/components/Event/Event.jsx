@@ -6,9 +6,11 @@ import {
 } from 'react-icons/fa';
 import PropTypes from 'prop-types';
 import './event.css';
-import { formatEventStart } from 'utils/formatEventStart';
+import { formatEventStart, formatEventDuration } from 'utils';
 
 export function Event({ name, location, speaker, type, start, end }) {
+  const formatedTime = formatEventStart(start);
+  const formatedDuration = formatEventDuration(start, end);
   return (
     <div className="event">
       <h2 className="title">{name}</h2>
@@ -22,13 +24,13 @@ export function Event({ name, location, speaker, type, start, end }) {
       </p>
       <p className="info">
         <FaCalendarAlt className="icon" />
-        {formatEventStart(start)}
+        {formatedTime}
       </p>
       <p className="info">
         <FaClock className="icon" />
-        Duration
+        {formatedDuration}
       </p>
-      {/* <span className="chip free|paid|vip">Event type</span> */}
+      <span className={`${[type]}`}></span>
     </div>
   );
   // body
