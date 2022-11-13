@@ -5,32 +5,33 @@ import {
   FaClock,
 } from 'react-icons/fa';
 import PropTypes from 'prop-types';
-import './event.css';
+import css from './event.css';
 import { formatEventStart, formatEventDuration } from 'utils';
+import { iconSize } from 'constans';
 
 export function Event({ name, location, speaker, type, start, end }) {
   const formatedTime = formatEventStart(start);
   const formatedDuration = formatEventDuration(start, end);
   return (
-    <div className="event">
+    <div className={css.event}>
       <h2 className="title">{name}</h2>
       <p className="info">
-        <FaMapMarkerAlt className="icon" />
+        <FaMapMarkerAlt className="icon" size={iconSize.sm} />
         {location}
       </p>
       <p className="info">
-        <FaUserAlt className="icon" />
+        <FaUserAlt className="icon" size={iconSize.sm} />
         {speaker}
       </p>
       <p className="info">
-        <FaCalendarAlt className="icon" />
+        <FaCalendarAlt className="icon" size={iconSize.sm} />
         {formatedTime}
       </p>
       <p className="info">
-        <FaClock className="icon" />
+        <FaClock className="icon" size={iconSize.sm} />
         {formatedDuration}
       </p>
-      <span className={`${[type]}`}></span>
+      <span className="chip">{type}</span>
     </div>
   );
   // body
