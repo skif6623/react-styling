@@ -21,31 +21,16 @@ export function EventBoard({ events }) {
 }
 
 EventBoard.propTypes = {
-  events: PropTypes.arrayof(
-    PropTypes.exact({
+  events: PropTypes.arrayOf(
+    PropTypes.shape({
       name: PropTypes.string.isRequired,
       location: PropTypes.string.isRequired,
       speaker: PropTypes.string.isRequired,
       type: PropTypes.string.isRequired,
-      time: PropTypes.exact({
+      time: PropTypes.shape({
         start: PropTypes.string.isRequired,
         end: PropTypes.string.isRequired,
       }),
     }),
   ),
 };
-
-// EventBoard.propTypes = {
-//   events: PropTypes.arrayOf(
-//     PropTypes.shape({
-//       name: PropTypes.string.isRequired,
-//       location: PropTypes.string.isRequired,
-//       speaker: PropTypes.string.isRequired,
-//       type: PropTypes.string.isRequired,
-//       time: PropTypes.shape({
-//         start: PropTypes.string.isRequired,
-//         end: PropTypes.string.isRequired,
-//       }),
-//     }),
-//   ),
-// };
