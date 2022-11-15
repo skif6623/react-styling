@@ -35,7 +35,9 @@ export const Info = styled.p`
   svg {
     display: block;
     margin-right: 8px;
-    color: var(--color-secondary-text);
+    color: ${({ theme }) => {
+      return theme.colors.secondaryText;
+    }};
 
     :hover {
       color: orange;
@@ -53,14 +55,14 @@ export const Status = styled.span`
   background-color: #000;
   color: #fff;
 
-  background-color: ${({ eventType }) => {
+  background-color: ${({ eventType, theme }) => {
     switch (eventType) {
       case 'free':
-        return ' var(--color-green)';
+        return theme.colors.green;
       case 'paid':
-        return ' var(--color-blue)';
+        return theme.colors.blue;
       case 'vip':
-        return ' var(--color-red)';
+        return theme.colors.red;
       default:
         return '#000';
     }
