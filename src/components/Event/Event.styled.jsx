@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 export const Card = styled.div`
   position: relative;
-  border: 2px dashed black;
+  border: ${({ theme }) => `2px dashed ${theme.colors.black}`};
   padding: 8px;
   border-radius: 4px;
 
@@ -18,7 +18,7 @@ export const Name = styled.h2`
   font-weight: 700;
   letter-spacing: 0.5px;
   text-transform: uppercase;
-  color: green;
+  color: ${({ theme }) => theme.colors.green};
 `;
 
 export const Info = styled.p`
@@ -26,7 +26,7 @@ export const Info = styled.p`
   align-items: center;
   margin-top: 0;
   margin-bottom: 8px;
-  color: blue;
+  color: ${({ theme }) => theme.colors.blue};
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
@@ -52,8 +52,8 @@ export const Status = styled.span`
   padding: 4px 8px;
   border-radius: 4px;
   text-transform: uppercase;
-  background-color: #000;
-  color: #fff;
+  background-color: ${({ theme }) => theme.colors.black};
+  color: ${({ theme }) => theme.colors.white};
 
   background-color: ${({ eventType, theme }) => {
     switch (eventType) {
@@ -64,7 +64,7 @@ export const Status = styled.span`
       case 'vip':
         return theme.colors.red;
       default:
-        return '#000';
+        return theme.colors.black;
     }
   }};
 `;
