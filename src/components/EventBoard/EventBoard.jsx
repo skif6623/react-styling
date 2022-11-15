@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 import { Event } from 'components/Event/Event';
-import './eventBoard.css';
+import { Board } from './EventBoard.styled';
 
 export function EventBoard({ events }) {
   return (
-    <div className="eventBoard">
+    <Board>
       {events.map(({ name, location, speaker, type, time }) => (
         <Event
           key={name}
@@ -16,36 +16,36 @@ export function EventBoard({ events }) {
           end={time.end}
         />
       ))}
-    </div>
+    </Board>
   );
 }
 
-// EventBoard.propTypes = {
-//   events: PropTypes.arrayof(
-//     PropTypes.exact({
-//       name: PropTypes.string.isRequired,
-//       location: PropTypes.string.isRequired,
-//       speaker: PropTypes.string.isRequired,
-//       type: PropTypes.string.isRequired,
-//       time: {
-//         start: PropTypes.string.isRequired,
-//         end: PropTypes.string.isRequired,
-//       },
-//     }),
-//   ),
-// };
-
 EventBoard.propTypes = {
-  events: PropTypes.arrayOf(
-    PropTypes.shape({
+  events: PropTypes.arrayof(
+    PropTypes.exact({
       name: PropTypes.string.isRequired,
       location: PropTypes.string.isRequired,
       speaker: PropTypes.string.isRequired,
       type: PropTypes.string.isRequired,
-      time: PropTypes.shape({
+      time: PropTypes.exact({
         start: PropTypes.string.isRequired,
         end: PropTypes.string.isRequired,
       }),
     }),
   ),
 };
+
+// EventBoard.propTypes = {
+//   events: PropTypes.arrayOf(
+//     PropTypes.shape({
+//       name: PropTypes.string.isRequired,
+//       location: PropTypes.string.isRequired,
+//       speaker: PropTypes.string.isRequired,
+//       type: PropTypes.string.isRequired,
+//       time: PropTypes.shape({
+//         start: PropTypes.string.isRequired,
+//         end: PropTypes.string.isRequired,
+//       }),
+//     }),
+//   ),
+// };
